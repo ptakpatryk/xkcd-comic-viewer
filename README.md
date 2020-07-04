@@ -7,8 +7,6 @@ Thanks for https://xkcd.com/ for sharing their API.
 
 - [Install](#install)
 - [Usage](#usage)
-- [Code of Conduct](#code-of-conduct)
-- [License](#license)
 
 ### Install
 
