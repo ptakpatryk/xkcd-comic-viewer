@@ -26,6 +26,10 @@ const ComicsList = () => {
       });
   }, []);
 
+  const fetchMoreHandler = () => {
+    fetchComic(data[data.length - 1].num - 1, setData, setIsLoading);
+  };
+
   const content =
     data.length === 0 ? (
       <ActivityIndicator color='blue' size='large' />
@@ -34,9 +38,15 @@ const ComicsList = () => {
         data={data}
         style={{ backgroundColor: '#fff' }}
         renderItem={({ item }) => (
-          <ComicsListItem comic={item} key={item.num} />
+          <ComicsListItem
+            comic={item}
+            key={item.num}
+            onPressHandler={() => onPressHandler(item.title, item.img)}
+          />
         )}
         keyExtractor={(item) => item.num.toString()}
+        onEndReachedThreshold={1}
+        onEndReached={fetchMoreHandler}
       />
     );
 
