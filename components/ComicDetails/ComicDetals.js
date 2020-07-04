@@ -15,7 +15,7 @@ const ComicDetails = ({
       <Icon
         name='gesture-spread'
         size={52}
-        color='#54b352'
+        color='#BB86FC'
         style={styles.icon}
       />
       <ImageZoom
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 10,
     zIndex: 99,
-    opacity: 0.65,
+    opacity: 0.7,
   },
   border: {
     borderWidth: 2,

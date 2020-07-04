@@ -2,12 +2,15 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 import ComicsList from './components/ComicsList/ComicsList';
 import ComicDetails from './components/ComicDetails/ComicDetals';
 
 const Stack = createStackNavigator();
-const headerNavigationOptions = {
+const headerNavigationOConfig = {
   title: 'Comic Reader',
   headerStyle: {
     backgroundColor: '#121212',
@@ -16,6 +19,9 @@ const headerNavigationOptions = {
     color: '#fff',
   },
   headerTintColor: '#fff',
+};
+const interpolatorConfig = {
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 
 export default function App() {
@@ -26,12 +32,18 @@ export default function App() {
         <Stack.Screen
           name='Home'
           component={ComicsList}
-          options={headerNavigationOptions}
+          options={{
+            ...headerNavigationOConfig,
+            ...interpolatorConfig,
+          }}
         />
         <Stack.Screen
           name='ComicDetails'
           component={ComicDetails}
-          options={headerNavigationOptions}
+          options={{
+            ...headerNavigationOConfig,
+            ...interpolatorConfig,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
