@@ -7,6 +7,16 @@ import ComicsList from './components/ComicsList/ComicsList';
 import ComicDetails from './components/ComicDetails/ComicDetals';
 
 const Stack = createStackNavigator();
+const headerNavigationOptions = {
+  title: 'Comic Reader',
+  headerStyle: {
+    backgroundColor: '#121212',
+  },
+  headerTitleStyle: {
+    color: '#fff',
+  },
+  headerTintColor: '#fff',
+};
 
 export default function App() {
   return (
@@ -16,18 +26,13 @@ export default function App() {
         <Stack.Screen
           name='Home'
           component={ComicsList}
-          options={{
-            title: 'Comic Reader',
-            headerStyle: {
-              backgroundColor: '#121212',
-            },
-            headerTitleStyle: {
-              color: '#fff',
-            },
-            headerTintColor: '#fff',
-          }}
+          options={headerNavigationOptions}
         />
-        <Stack.Screen name='ComicDetails' component={ComicDetails} />
+        <Stack.Screen
+          name='ComicDetails'
+          component={ComicDetails}
+          options={headerNavigationOptions}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

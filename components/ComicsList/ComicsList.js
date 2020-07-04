@@ -10,9 +10,13 @@ import { fetchComic } from '../../util/util';
 
 import ComicsListItem from './ComicsListItem/ComicsListItem';
 
-const ComicsList = () => {
+const ComicsList = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+
+  const onPressHandler = (title, imgSrc) => {
+    navigation.navigate('ComicDetails', { title, imgSrc });
+  };
 
   useEffect(() => {
     fetch('http://xkcd.com/info.0.json', {
