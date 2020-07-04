@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Alert,
   View,
   Text,
   StyleSheet,
@@ -14,10 +15,6 @@ const ComicsList = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
-  const onPressHandler = (title, imgSrc) => {
-    navigation.navigate('ComicDetails', { title, imgSrc });
-  };
-
   useEffect(() => {
     fetch('http://xkcd.com/info.0.json', {
       header: {
@@ -27,11 +24,26 @@ const ComicsList = ({ navigation }) => {
       .then((res) => res.json())
       .then((data) => {
         setData([data]);
+      })
+      .catch(() => {
+        Alert.alert(
+          'Server Problem',
+          "We couldn't connect with the server. Try to restart application or come back later.",
+          [
+            {
+              text: 'OK',
+            },
+          ]
+        );
       });
   }, []);
 
   const fetchMoreHandler = () => {
     fetchComic(data[data.length - 1].num - 1, setData, setIsLoading);
+  };
+
+  const goToDetailsHandler = (title, imgSrc) => {
+    navigation.navigate('ComicDetails', { title, imgSrc });
   };
 
   const content =
@@ -45,7 +57,7 @@ const ComicsList = ({ navigation }) => {
           <ComicsListItem
             comic={item}
             key={item.num}
-            onPressHandler={() => onPressHandler(item.title, item.img)}
+            goToDetailsHandler={() => goToDetailsHandler(item.title, item.img)}
           />
         )}
         keyExtractor={(item) => item.num.toString()}

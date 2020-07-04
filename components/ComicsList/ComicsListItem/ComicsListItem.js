@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const ComicListItem = ({ comic, onPressHandler }) => {
+const ComicListItem = ({ comic, goToDetailsHandler }) => {
   const onLoadAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const ComicListItem = ({ comic, onPressHandler }) => {
     <Animated.View style={{ ...styles.comicContainer, opacity: onLoadAnim }}>
       <Text style={styles.comicTitle}>{comic.title}</Text>
       <Image source={{ uri: comic.img }} style={styles.comicImg} />
-      <TouchableOpacity style={styles.btn} onPress={onPressHandler}>
+      <TouchableOpacity style={styles.btn} onPress={goToDetailsHandler}>
         <Icon name='chevron-circle-right' size={32} color='#BB86FC' />
       </TouchableOpacity>
     </Animated.View>
