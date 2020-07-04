@@ -36,7 +36,7 @@ const ComicsList = () => {
     ) : (
       <FlatList
         data={data}
-        style={{ backgroundColor: '#fff' }}
+        style={{ backgroundColor: '#121212' }}
         renderItem={({ item }) => (
           <ComicsListItem
             comic={item}
@@ -68,14 +68,14 @@ const ComicsList = () => {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: '#54b352',
+    backgroundColor: '#202020',
   },
   text: {
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#fff',
-    marginLeft: 10,
-    paddingVertical: 15,
+    marginLeft: 16,
+    paddingVertical: 17,
   },
   spinner: {
     position: 'absolute',
